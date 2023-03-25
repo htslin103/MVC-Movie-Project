@@ -34,9 +34,6 @@ jobs:
       - name: dotnet tool restore 
         run: dotnet tool restore
         
-      - name: dotnet migrations
-        run: dotnet ef migrations bundle --verbose -p MvcMovie.csproj -o ${{env.DOTNET_ROOT}}/myapp/migrate
-        
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
