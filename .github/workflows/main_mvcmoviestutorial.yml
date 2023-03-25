@@ -27,9 +27,15 @@ jobs:
 
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
-
+        
+      - name: dotnet new tool-manifest
+      - run: dotnet new tool-manifest
+      
       - name: dotnet install ef
         run: dotnet tool install -g dotnet-ef
+        
+      - name: dotnet restore
+        run: dotnet tool restore
         
       - name: dotnet bundle migration
         run: dotnet ef migrations bundle -p MvcMovie.csproj -o ${{env.DOTNET_ROOT}}/myapp/migrate
